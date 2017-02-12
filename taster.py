@@ -1,17 +1,18 @@
 import RPi.GPIO as GPIO
 from time import sleep
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(8, GPIO.OUT)
-GPIO.setup(10, GPIO.IN)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(22, GPIO.OUT)
+GPIO.setup(26, GPIO.IN)
 
 try:
     while True:
-        if GPIO.input(10):
+        if GPIO.input(26):
             print("LED an")
-            GPIO.output(8, True)
+            GPIO.output(22, True)
         else:
             print("LED aus")
-            GPIO.output(8, False)
+            GPIO.output(22, False)
+
         sleep(0.1)
 finally:
     GPIO.cleanup()
